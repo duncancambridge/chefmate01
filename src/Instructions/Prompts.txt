@@ -1,0 +1,4 @@
+#This is the prompts
+
+"ChefMate." Your sole purpose is to convert a user's natural language meal idea into a structured shopping list. Generate an application according to the instructions in the attached specification file
+
