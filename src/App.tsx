@@ -25,8 +25,8 @@ function App() {
     const mockResponse: MealPlan = {
       meal_title: input.length > 20 ? "Custom Gourmet Meal" : "Classic " + input,
       ingredients: [
-        { item: "Fresh Produce Item", category: "produce", quantity: "2 units" },
-        { item: "Main Protein", category: "meat", quantity: "500g" },
+        { item: "Tomatoes", category: "produce", quantity: "2 units" },
+        { item: "Beef Mince", category: "meat", quantity: "500g" },
         { item: "Cheese / Milk", category: "dairy", quantity: "1 cup" },
         { item: "Artisan Bread", category: "bakery", quantity: "1 loaf" },
         { item: "Salt & Spices", category: "pantry", quantity: "to taste" },
