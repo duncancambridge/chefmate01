@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { MealInput } from './components/MealInput';
 import { IconLegend } from './components/IconLegend';
-import { IngredientList, Ingredient } from './components/IngredientList';
+import { IngredientList } from './components/IngredientList';
+import type { Ingredient } from './components/IngredientList';
 
 interface MealPlan {
   meal_title: string;
