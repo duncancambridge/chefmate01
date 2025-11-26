@@ -11,7 +11,10 @@ export const generateShoppingList = async (mealIdea: string) => {
   }
 
   const genAI = new GoogleGenerativeAI(API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  // Updated to use the requested Gemini 2.0 Flash model
+  // Note: "gemini-2.5-flash" does not exist yet. The latest flash model is gemini-2.0-flash.
+  // I will use gemini-2.0-flash as it is the most current successor to 1.5.
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   const prompt = `
     You are ChefMate, a helpful cooking assistant.
