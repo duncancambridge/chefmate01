@@ -4,6 +4,7 @@ import { MealInput } from './components/MealInput';
 import { IconLegend } from './components/IconLegend';
 import { IngredientList } from './components/IngredientList';
 import type { Ingredient } from './components/IngredientList';
+import { generateShoppingList } from './services/ai';
 
 interface MealPlan {
   meal_title: string;
@@ -18,35 +19,16 @@ function App() {
     setIsLoading(true);
     setMealPlan(null); // Reset previous result
 
-    // Simulate AI delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    // Mock Response based on specification
-    const mockResponse: MealPlan = {
-      meal_title: input.length > 20 ? "Custom Gourmet Meal" : "Classic " + input,
-      ingredients: [
-        { item: "Tomatoes", category: "produce", quantity: "2 units" },
-        { item: "Beef Mince", category: "meat", quantity: "500g" },
-        { item: "Cheese / Milk", category: "dairy", quantity: "1 cup" },
-        { item: "Artisan Bread", category: "bakery", quantity: "1 loaf" },
-        { item: "Salt & Spices", category: "pantry", quantity: "to taste" },
-      ]
-    };
-    
-    // Attempt to make the mock slightly dynamic based on input just for fun before real AI
-    if (input.toLowerCase().includes("pasta") || input.toLowerCase().includes("spaghetti")) {
-       mockResponse.meal_title = "Italian Pasta Night";
-       mockResponse.ingredients = [
-        { item: "Pancetta or Bacon", category: "meat", quantity: "150g" },
-        { item: "Eggs", category: "dairy", quantity: "3 large" },
-        { item: "Spaghetti", category: "bakery", quantity: "400g" },
-        { item: "Black Pepper", category: "pantry", quantity: "to taste" },
-        { item: "Parmesan Cheese", category: "dairy", quantity: "100g" }
-       ];
+    try {
+      const plan = await generateShoppingList(input);
+      setMealPlan(plan);
+    } catch (error) {
+      console.error("Error generating list:", error);
+      // Fallback or alert could go here
+      alert("Something went wrong! Please check your API key or try again.");
+    } finally {
+      setIsLoading(false);
     }
-
-    setMealPlan(mockResponse);
-    setIsLoading(false);
   };
 
   return (

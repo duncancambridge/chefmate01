@@ -6,7 +6,7 @@ ChefMate is a single-page React application designed to convert natural language
 ## Current Implementation
 ### Core Features
 - **Meal Input:** Large text area for users to input natural language meal ideas.
-- **Mock AI Processing:** Simulates AI generation with a 2-second delay, returning a structured JSON response (currently mocked).
+- **AI Processing:** Integration with Google Gemini (via `src/services/ai.ts`) to generate real-time shopping lists from user prompts.
 - **Interactive List:** 
     - Ingredients are categorized into Meat, Produce, Dairy, Bakery, and Pantry.
     - Users can toggle items to mark them as "checked" (visual dimming and strikethrough).
@@ -18,6 +18,7 @@ ChefMate is a single-page React application designed to convert natural language
 - **Styling:** Tailwind CSS with a custom configuration (Sage Green, Cream, Slate).
 - **Icons:** Lucide React
 - **State Management:** Local React state (`useState`).
+- **AI Service:** `GoogleGenerativeAI` client SDK (Gemini 1.5 Flash model).
 
 ### Design System
 - **Palette:** 
@@ -29,4 +30,5 @@ ChefMate is a single-page React application designed to convert natural language
 ## Planned Changes
 - [x] Initial Project Setup (React, Tailwind, Lucide)
 - [x] Component Architecture Implementation (Header, MealInput, IconLegend, IngredientList)
-- [ ] Integration with Google Generative AI (Gemini) for real-time list generation.
+- [x] Integration with Google Generative AI (Gemini) for real-time list generation.
+- [ ] Add error handling UI for API failures.
